@@ -5,4 +5,5 @@ const nextConfig = {
     basePath: "/hybrid_boardgame"
   };
   
-export default nextConfig;
+module.exports = nextConfig;
+//export default nextConfig;
