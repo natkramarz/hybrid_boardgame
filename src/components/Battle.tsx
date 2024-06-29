@@ -20,7 +20,7 @@ const initialPlayerStats: PlayerStats = {
   regeneration: 3,
 };
 
-const label = { 'health': 'Zdrowie', 
+const label: { [key in keyof PlayerStats]: string } = { 'health': 'Zdrowie', 
     'attack': 'Atak',
     'armor': 'Pancerz',
     'dodgeChance': 'Szansa na unik (%)',
@@ -219,13 +219,17 @@ const Battle: React.FC = () => {
               <div>
                   Pirat 1 statystyki:
                 {
-                  Object.entries(player1).map(entry => <div key={entry[0]}>{label[entry[0]]} : {entry[1]}</div>)
+                  Object.entries(player1).map(([key, value]) => <div key={key}>
+                  {label[key as keyof PlayerStats]} : {value}
+                </div>)
                 }
               </div>
               <div>
                 Pirat 2 statystyki:
                 {
-                  Object.entries(player2).map(entry => <div key={entry[0]}>{label[entry[0]]} : {entry[1]}</div>)
+                  Object.entries(player2).map(([key, value]) =><div key={key}>
+                  {label[key as keyof PlayerStats]} : {value}
+                </div>)
                 }
               </div>
             </>
